@@ -1,4 +1,6 @@
-const deck = {
+const { generateDeck, shuffleDeck, drawCard } = require('./deck')
+
+const rules = {
     'A': 'Cachoeira: Para realizar uma cachoeira, cada jogador começa a beber sua bebida ao mesmo tempo que a pessoa à sua esquerda. Nenhum jogador pode parar de beber até que o jogador antes deles pare.',
     '2': 'Dê 2: Escolha um jogador. Este jogador leva 2 goles. Ou escolha 2 jogadores e cada um desses jogadores precisa tomar 1 gole.',
     '3': 'Tome 1: Se você pegar este cartão, beba 1 gole!',
@@ -21,11 +23,34 @@ const deck = {
     'K': 'King’s Cup: As 3 primeiras pessoas que comprarem esta carta, colocam suas bebidas na Kings Cup no meio da mesa. O 4º          jogador que receber essa carta deve beber todo o conteúdo da Copa do Rei.',
 }
 
-const game = () => {
-    let isPlaying = true
-    while(isPlaying) {
-        console.log('Game loop')
-    }
+const initGame = () => {
+    const deck = shuffleDeck({ mode: 0 })(generateDeck())
+    return { isPlaying: true, deck }
 }
 
-game()
+const endGame = () => {
+    console.log('Fim do Jogo, começa dnv')
+}
+
+const gameLoop = ({ deck }) => {
+    const card = drawCard(deck)
+
+    if (!card) {
+        console.log('Acabou o baralho!')
+        return { isPlaying: false, deck }
+    }
+
+    console.log('Game loop', card)
+
+    return { isPlaying: true, deck }
+}
+
+(() => {
+    let game = initGame()
+
+    while (game.isPlaying) {
+       game = gameLoop(game)
+    }
+
+    endGame()
+})()
