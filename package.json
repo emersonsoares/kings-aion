@@ -1,0 +1,11 @@
+{
+  "name": "kings-noia",
+  "version": "0.0.1",
+  "description": "A game about friends and drug abuse ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Emerson Soares <on.emersonsoares@gmail.com>",
+  "license": "ISC"
+}
