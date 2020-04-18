@@ -25,22 +25,24 @@ const rules = {
 
 const initGame = () => {
     const deck = shuffleDeck({ mode: 0 })(generateDeck())
+    console.log('Game Init Deck: ', deck)
+
     return { isPlaying: true, deck }
 }
 
 const endGame = () => {
-    console.log('Fim do Jogo, começa dnv')
+    console.log('End Game')
 }
 
 const gameLoop = ({ deck }) => {
     const card = drawCard(deck)
 
     if (!card) {
-        console.log('Acabou o baralho!')
+        console.log('Deck is empty!')
         return { isPlaying: false, deck }
     }
 
-    console.log('Game loop', card)
+    console.log('Game loop, Draw Card: ', card)
 
     return { isPlaying: true, deck }
 }
