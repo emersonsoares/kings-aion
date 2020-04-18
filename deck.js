@@ -45,8 +45,8 @@ const shuffleDeck = ({ mode = 0 }) => (deck) => {
 }
 
 const drawCard = (deck) => {
-  const card = deck.pop()
-  return card
+  const [ card, ...rest ] = deck
+  return { card, deck: rest }
 }
 
 module.exports = { generateDeck, shuffleDeck, drawCard }

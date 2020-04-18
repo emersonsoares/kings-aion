@@ -34,8 +34,8 @@ const endGame = () => {
     console.log('End Game')
 }
 
-const gameLoop = ({ deck }) => {
-    const card = drawCard(deck)
+const gameLoop = (game) => {
+    const { card, deck } = drawCard(game.deck)
 
     if (!card) {
         console.log('Deck is empty!')
