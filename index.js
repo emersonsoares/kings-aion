@@ -44,7 +44,7 @@ const gameLoop = game => {
 
     const rule = showRule(rules)(card)
 
-    console.log('Game loop, Draw Card: ', rule)
+    console.log('Game loop, Draw Card: %o, %o', card, rule)
 
     return { isPlaying: true, deck }
 }
