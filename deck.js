@@ -1,7 +1,7 @@
 const makeCard = (suit, value) => ({ suit, value })
 
 const generateDeck = () => {
-  const values = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+  const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
   const suits = ['Clubs', 'Diamonds', 'Spades', 'Hearts']
 
   const deck = values.reduce((curDeck, value) => {
@@ -49,4 +49,8 @@ const drawCard = (deck) => {
   return { card, deck: rest }
 }
 
-module.exports = { generateDeck, shuffleDeck, drawCard }
+const showRule = rules => card => {
+  return rules[card.value]
+}
+
+module.exports = { generateDeck, shuffleDeck, drawCard, showRule }

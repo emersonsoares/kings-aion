@@ -1,4 +1,4 @@
-const { generateDeck, shuffleDeck, drawCard } = require('./deck')
+const { generateDeck, shuffleDeck, drawCard, showRule } = require('./deck')
 
 const rules = {
     'A': 'Cachoeira: Para realizar uma cachoeira, cada jogador começa a beber sua bebida ao mesmo tempo que a pessoa à sua esquerda. Nenhum jogador pode parar de beber até que o jogador antes deles pare.',
@@ -34,7 +34,7 @@ const endGame = () => {
     console.log('End Game')
 }
 
-const gameLoop = (game) => {
+const gameLoop = game => {
     const { card, deck } = drawCard(game.deck)
 
     if (!card) {
@@ -42,7 +42,9 @@ const gameLoop = (game) => {
         return { isPlaying: false, deck }
     }
 
-    console.log('Game loop, Draw Card: ', card)
+    const rule = showRule(rules)(card)
+
+    console.log('Game loop, Draw Card: ', rule)
 
     return { isPlaying: true, deck }
 }
